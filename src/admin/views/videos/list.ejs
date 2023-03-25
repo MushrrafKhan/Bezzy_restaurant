@@ -1,0 +1,105 @@
+<% layout('../layouts/list') -%>
+<div class="row ">
+    <div class="col-md-12">
+        <div class="card bg-transparent">
+            <div class="contact-header d-flex align-items-sm-center media flex-column flex-sm-row bg-white mb-30">
+                <div class="contact-header-left media-body d-flex align-items-center mr-4 col-6">
+                    <!-- Add New Contact Btn -->
+                    <div class="add-new-contact mr-20">
+                        <div class="float-left">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="/videos">Live videos</a></li>
+                                <li class="breadcrumb-item active"><a href="">List</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- End Add New Contact Btn -->
+                    
+                    
+                    <!-- End Search Form -->
+                </div>
+                <!-- <div class="contact-header-right d-flex align-items-center justify-content-end mt-3 mt-sm-0 col-6">
+                    <div class="page-title-box">
+                        <div class="float-right">
+                            <a href="/categories/add" class="btn btn-success waves-effect waves-light"><span class="fa fa-plus"></span> Add Category/Subcategory </a>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+         </div>
+        
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="page-title mb-30">Live Videos</h4>
+                
+                <table class="table nowrap" id="live-datatable">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Title</th>
+                            <th>Witness</th>
+                            <th>Category</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+              </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showTime() {
+   var date=new Date();
+   var d = date.getDate();
+   var w = date.getDay();
+    var m= date.getMonth()+1;
+    var y= date.getFullYear();
+    d = d < 10 ? '0'+d : d;
+    m = m < 10 ? '0'+m : m;
+    var strDate = d + '-' + m + '-' + y;
+    var hours = date.getHours();
+     var minutes = date.getMinutes();
+     var ampm = hours >= 12 ? 'pM' : 'aM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    var strTime = hours + ':' + minutes + ' ' + ampm;
+     var date_=strDate+'  '+strTime
+    
+     var monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]; 
+     var dayNames= ["Sun,","Mon,","Tue,","Wed,","Thu,","Fri,","Sat,"];
+
+     document.getElementById("h").innerText = hours;
+     document.getElementById("h").textContent = hours;
+
+     document.getElementById("m").innerText = minutes;
+     document.getElementById("m").textContent = minutes;
+
+     document.getElementById("ampm").innerText = ampm;
+     document.getElementById("ampm").textContent = ampm;
+
+    //  document.getElementById("dn").innerText = dayNames[w];
+    //  document.getElementById("dn").textContent = dayNames[w];
+
+     document.getElementById("d").innerText = d;
+     document.getElementById("d").textContent = d;
+
+     document.getElementById("mn").innerText = m;
+     document.getElementById("mn").textContent = m;
+
+     document.getElementById("y").innerText = y;
+     document.getElementById("y").textContent = y;
+
+   
+    }
+   
+    showTime();
+    setInterval(showTime, 1000);
+</script>

@@ -1,0 +1,110 @@
+<% layout('../layouts/admin') -%>
+<div class="row ">
+    <div class="col-12">
+        <div class="page-title-box">
+            <div class="page-title-left">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="/users"> Users</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript: void(0);">Detail</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 m-2">
+        <div class="page-title-box">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+      
+        <div class="card">
+            
+            <div class="card-body">
+                <h4 class="page-title" style="color: #fff;">View User Detail</h4>
+                <div class="row">
+                    <div class="col-lg-7">
+                        <div class="form-group mb-3">
+                            <img style="width: 80px; height: 80px; border-radius: 50%;margin-top: 10px; border: 1px solid #d3d3d3" src="<%=img%><%=user.image%>" alt="image">
+                            <div class="text-danger "></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group mb-3">
+                            <label style="color:#fff; font-weight:bold;">Name: </label> <%= user.name %>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group mb-3">
+                            <label style="color:#fff; font-weight:bold;">Email: </label> <%= user.email %>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group mb-3">
+                            <label style="color:#fff; font-weight:bold;">Status: </label> <%- user.status ?'<span class="badge label-table badge-danger">In-Active</span>':'<span class="badge label-table badge-success">Active</span>' %>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group mb-3">
+                            <label style="color:#fff; font-weight:bold;">Created date: </label> <%= showDate(user.created) %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showTime() {
+   var date=new Date();
+   var d = date.getDate();
+   var w = date.getDay();
+    var m= date.getMonth()+1;
+    var y= date.getFullYear();
+    d = d < 10 ? '0'+d : d;
+    m = m < 10 ? '0'+m : m;
+    var strDate = d + '-' + m + '-' + y;
+    var hours = date.getHours();
+     var minutes = date.getMinutes();
+     var ampm = hours >= 12 ? 'pM' : 'aM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    var strTime = hours + ':' + minutes + ' ' + ampm;
+     var date_=strDate+'  '+strTime
+    
+     var monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]; 
+     var dayNames= ["Sun,","Mon,","Tue,","Wed,","Thu,","Fri,","Sat,"];
+
+     document.getElementById("h").innerText = hours;
+     document.getElementById("h").textContent = hours;
+
+     document.getElementById("m").innerText = minutes;
+     document.getElementById("m").textContent = minutes;
+
+     document.getElementById("ampm").innerText = ampm;
+     document.getElementById("ampm").textContent = ampm;
+
+    //  document.getElementById("dn").innerText = dayNames[w];
+    //  document.getElementById("dn").textContent = dayNames[w];
+
+     document.getElementById("d").innerText = d;
+     document.getElementById("d").textContent = d;
+
+     document.getElementById("mn").innerText = m;
+     document.getElementById("mn").textContent = m;
+
+     document.getElementById("y").innerText = y;
+     document.getElementById("y").textContent = y;
+
+   
+    }
+   
+    showTime();
+    setInterval(showTime, 1000);
+</script>
+
+    
+    

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Node PDF Creator</title>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 98%;
+        }
+        
+        td, th {
+          /* border: 1px solid #dddddd; */
+          border: 1px solid rgb(45, 44, 44);
+          text-align: left;
+          padding: 8px;
+          
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        </style>
+  </head>
+  <body>
+    <p style="font-size:35px;font-weight:500;"> Order Details</p>
+    <table>
+        <tr>
+          <th style="width: 20%;">Date</th>
+          <th style="width: 20%;">Order Id</th>
+          <th style="width: 20%">Customer Name</th>
+          <th style="width: 20%">Server Name</th>
+          <th style="width: 20%;">Approver Name</th>
+        </tr>
+        {{#each data_}}
+        <tr style="background-color: #dddddd;  border-bottom: 1px solid black; height: 100px; overflow: auto;">
+          <td style="width: 20%; vertical-align: top; ">{{date}}</td>
+          <td style="width: 20%; vertical-align: top; ">{{this.orderId}}</td>
+          <td style="width: 20%;  vertical-align: top; ">{{this.customer}}</td>
+          <td style="width: 20%; vertical-align: top; ">{{this.serverId}}</td>
+          <td id="time" style="width: 20%; vertical-align: top; ">{{this.approver}}</td>
+        </tr>
+        {{/each}}
+      </table>
+      
+    
+
+    <!-- <ul> -->
+     <!-- {{#each users}} -->
+        <!-- <img src=" https://flushitdev.s3.ap-south-1.amazonaws.com/{{this.image}}" class="img-fluid" style="width:158px; height:150px; margin-top: 10px;" />
+        <li>caption: {{this.caption}}</li>
+        <li>food_eaten_before_bm: {{this.food_eaten_before_bm}}</li>
+        <li>activity_before_bm: {{this.activity_before_bm}}</li>
+        <li>created: {{this.created}}</li>
+      
+      <br /> -->
+      <!-- {{/each}} -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <script
+    src=" https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js"
+  ></script>
+
+   
+  </body>
+</html>

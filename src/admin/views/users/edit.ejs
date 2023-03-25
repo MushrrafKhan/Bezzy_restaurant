@@ -1,0 +1,155 @@
+<% layout('../layouts/admin') -%>
+<div class="row ">
+    <div class="col-12">
+        <div class="page-title-box">
+            <div class="page-title-left">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="/users"> Users</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript: void(0);">Edit</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 m-2">
+        <div class="page-title-box">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+      
+        <div class="card">
+            
+            <div class="card-body">
+                <h4 class="page-title" style="color: #fff;">Edit User Detail</h4><br>
+                <form method="post" action="/users/update/<%=userdata._id %>" id="addConciergeForm">
+                    <div class="row">
+                        <div class="col-lg-7">
+                            <div class="form-group mb-3">
+                                <label>Name<span class="text-danger">*</span></label>
+                                <input type="text" name="name" class="form-control" placeholder="Name" value="<%=userdata.name %>" autocomplete="off">
+                                <div class="text-danger name"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="form-group mb-3">
+                                <label>Enter Email<span class="text-danger">*</span></label>
+                                <input type="text" id="email" name="email" class="form-control" placeholder="Enter Email" autocomplete="off" value="<%= userdata.email%>">
+                                <div class="text-danger email"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            
+                        </div>
+                        
+                        
+                        <div class="col-lg-12 text-left">
+                            <div class="form-group mb-3 text-center">
+                                <button id="submitAddConciergeForm" type="submit" class="btn btn-primary waves-effect waves-light">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $("#addConciergeForm").validate({
+            errorPlacement: function (error, element) {
+                const name = $(element).attr("name");
+                error.appendTo($("." + name));
+            },
+            rules: {
+                concierge_type: {
+                    required: true
+                },
+                name: {
+                    required: true,
+                    minlength: 3,
+                    maxlength: 20,
+                    pattern: /^[a-zA-Z0-9 ]*$/
+                },
+                last_name: {
+                    required: true,
+                    minlength: 3,
+                    maxlength: 20,
+                    pattern: /^[a-zA-Z0-9 ]*$/
+                },
+                email: {
+                    required: true,
+                    minlength: 3,
+                    maxlength: 80,
+                    pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                },
+                mobile:{
+                    required: true,
+                    pattern: /^(?:\(\d{3}\)|\d{3})[- ]?\d{3}[- ]?\d{4}$/
+                },
+                password: {
+                    required: true,
+                    minlength: 8,
+                },
+                confirm_password: {
+                    required: true,
+                    equalTo: '#password'
+                }
+            },
+            messages: CONCIERGE_ADD_FORM
+        });
+    });
+</script>
+
+<script>
+    function showTime() {
+   var date=new Date();
+   var d = date.getDate();
+   var w = date.getDay();
+    var m= date.getMonth()+1;
+    var y= date.getFullYear();
+    d = d < 10 ? '0'+d : d;
+    m = m < 10 ? '0'+m : m;
+    var strDate = d + '-' + m + '-' + y;
+    var hours = date.getHours();
+     var minutes = date.getMinutes();
+     var ampm = hours >= 12 ? 'pM' : 'aM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    var strTime = hours + ':' + minutes + ' ' + ampm;
+     var date_=strDate+'  '+strTime
+    
+     var monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]; 
+     var dayNames= ["Sun,","Mon,","Tue,","Wed,","Thu,","Fri,","Sat,"];
+
+     document.getElementById("h").innerText = hours;
+     document.getElementById("h").textContent = hours;
+
+     document.getElementById("m").innerText = minutes;
+     document.getElementById("m").textContent = minutes;
+
+     document.getElementById("ampm").innerText = ampm;
+     document.getElementById("ampm").textContent = ampm;
+
+    //  document.getElementById("dn").innerText = dayNames[w];
+    //  document.getElementById("dn").textContent = dayNames[w];
+
+     document.getElementById("d").innerText = d;
+     document.getElementById("d").textContent = d;
+
+     document.getElementById("mn").innerText = m;
+     document.getElementById("mn").textContent = m;
+
+     document.getElementById("y").innerText = y;
+     document.getElementById("y").textContent = y;
+
+   
+    }
+   
+    showTime();
+    setInterval(showTime, 1000);
+</script>

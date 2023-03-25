@@ -1,0 +1,191 @@
+<% layout('../layouts/list') -%>
+
+        <div class="content-body">
+
+            <div class="container-fluid mt-3">
+                
+                <div class="row row-margin">
+                    <div class="col-lg-12">
+                        
+                        <div class="card xyz">
+
+                            <div class="card-body">
+
+                                <div class="position-absolute top-left">
+                                    <h4 class="text-white">sfsdfsdfd<%=cms.title%></h4>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <!-- <div class="form-group has-search">
+                                        <span class="fa fa-search form-control-feedback"></span>
+                                        <input type="text" class="form-control search-bar"
+                                            placeholder="Search by Keyword">
+
+                                        <div class="position-absolute status">
+                                            <label for="status">Status</label>
+                                        </div>
+
+                                    </div>
+                                    <div class="position-absolute top-center">
+                                        <select class="ui dropdown form-control">
+                                            <option>All</option>
+                                            <option>Activate</option>
+                                            <option>Deactivate</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="position-absolute per-page">
+                                        <label for="perPage">Per Page</label>
+                                    </div>
+
+                                    <div class="position-absolute top-right">
+                                        <select class="ui dropdown form-control">
+                                            <option>10</option>
+                                            <option>20</option>
+                                            <option>30</option>
+                                            <option>50</option>
+                                            <option>100</option>
+                                        </select>
+                                    </div> -->
+
+                                    <!-- <form class="form-horizontal"><input type="hidden" name="deleted"><input
+                                        type="hidden" name="sort" value="Users.id"><input type="hidden"
+                                        name="direction" value="DESC">
+                                    <div class="row"> -->
+                                        <!-- <div class="col-md-4 col-sm-6">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group mb-n status-bar">
+                                                        <div class="row">
+                                                            <label
+                                                                class="col-md-6 col-sm-6 col-xs-5 control-label heading-label text-right">Status</label>
+                                                            <div class="col-md-6 col-sm-6 col-xs-7">
+                                                                <div class="row">
+                                                                    <select class="form-control">
+                                                                        <option>All</option>
+                                                                        <option>Activate</option>
+                                                                        <option>Deactivate</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                        
+                                    <!-- </div>
+                                </form> -->
+                                <form action="/cms/cmsdata/<%=cms._id%>" method="Post" >
+
+
+                                    <div class="active-member">
+                                        <div class="form-group row">
+                                            <label class="col-lg-12 col-form-label" for="val-username">About-us Description
+                                                <!-- <span class="text-danger">*</span> -->
+                                            </label>
+                                            <div class="col-lg-6">
+                                                <textarea type="text" id="editor" name="description" class="form-control"  ><%=cms.description%></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group  row">
+                                            <div class="col-lg-6">
+                                                 <button style="margin-left: 30px 10px;" type="submit" class="btn btn-primary  ">Submit</button><br>
+                                            </div>
+                                        </div>
+
+                                        
+
+
+                                        <!-- <div class="table-responsive">
+                                            <table class="table table-xs mb-0">
+                                                <thead>
+                                                    <tr class="text-center">
+                                                        <th>SN</th>
+                                                        <th scope="col">Name</th>
+                                                        <th scope="col">Usertype</th>
+                                                        <th scope="col">Image</th>
+                                                        
+                                                        <th scope="col">Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                         
+                                                </tbody>
+                                            </table>
+                                        </div> -->
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <script src="https://cdn.ckeditor.com/4.16.2/standard/ckeditor.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+<script>
+    CKEDITOR.replace( 'editor' );
+    
+  
+   
+ 
+ 
+</script> 
+
+<script>
+    function showTime() {
+   var date=new Date();
+   var d = date.getDate();
+   var w = date.getDay();
+    var m= date.getMonth()+1;
+    var y= date.getFullYear();
+    d = d < 10 ? '0'+d : d;
+    m = m < 10 ? '0'+m : m;
+    var strDate = d + '-' + m + '-' + y;
+    var hours = date.getHours();
+     var minutes = date.getMinutes();
+     var ampm = hours >= 12 ? 'pM' : 'aM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    var strTime = hours + ':' + minutes + ' ' + ampm;
+     var date_=strDate+'  '+strTime
+    
+     var monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]; 
+     var dayNames= ["Sun,","Mon,","Tue,","Wed,","Thu,","Fri,","Sat,"];
+
+     document.getElementById("h").innerText = hours;
+     document.getElementById("h").textContent = hours;
+
+     document.getElementById("m").innerText = minutes;
+     document.getElementById("m").textContent = minutes;
+
+     document.getElementById("ampm").innerText = ampm;
+     document.getElementById("ampm").textContent = ampm;
+
+    //  document.getElementById("dn").innerText = dayNames[w];
+    //  document.getElementById("dn").textContent = dayNames[w];
+
+     document.getElementById("d").innerText = d;
+     document.getElementById("d").textContent = d;
+
+     document.getElementById("mn").innerText = m;
+     document.getElementById("mn").textContent = m;
+
+     document.getElementById("y").innerText = y;
+     document.getElementById("y").textContent = y;
+
+   
+    }
+   
+    showTime();
+    setInterval(showTime, 1000);
+</script>

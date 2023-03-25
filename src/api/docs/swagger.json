@@ -1,0 +1,4025 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Bezzy Api",
+    "description": "Bezzy apis"
+  },
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/auth/generate-token/{_id}": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "generate-token",
+        "description": "generate-token",
+        "operationId": "generate-token",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "name": "_id",
+            "in": "path",
+            "required": true,
+            "description": "Token Id",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Token generate successfully",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/auth/log-in": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Log in system",
+        "description": "Log in system",
+        "operationId": "log-in",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/login"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Login",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/auth/signup-mail": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Send Email Signup",
+        "description": "Send Email Sign Up",
+        "operationId": "send-mail",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/sendmail_signup"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Signup",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/auth/verify-otp": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Verify Otp",
+        "description": "Verify otp",
+        "operationId": "verify-otp",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/verify_otp"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User profile in system",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/auth/signup-mobile": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Add Mobile Number",
+        "description": "Add Mobile Number",
+        "operationId": "addMobile",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/signup-mobile"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User Profile Updated",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/auth/signup-profile": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Add name and profile",
+        "description": "Add name and profile",
+        "operationId": "Addprofile",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "in": "formData",
+            "name": "name",
+            "value": "Johnny Depp",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "position",
+            "value": "Manager",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "image",
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User Profile Updated",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/auth/log-out": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Logout",
+        "description": "",
+        "operationId": "logOut",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/auth/forgot-password": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Forgot Password",
+        "description": "Forgot Password",
+        "operationId": "forgot-password",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/forgot_password"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Forgot password in system",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/auth/reset-password": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Reset Password",
+        "description": "Reset password",
+        "operationId": "reset-password",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/reset_password"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User profile in system",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/auth/resend-otp": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Resend Otp",
+        "description": "Resend otp",
+        "operationId": "resend-otp",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/resend_otp"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resend otp in system",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/auth/change-password": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "change Password",
+        "description": "change password",
+        "operationId": "change-password",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/change_password"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User profile in system",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+
+
+    "/restaurant/addRestaurant": {
+      "post": {
+        "tags": [
+          "Restaurant"
+        ],
+        "summary": "Add restaurant",
+        "description": "Add restaurant",
+        "operationId": "addRestaurant",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/add_restaurant"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Restaurant add successfully",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/restaurant/getAllRestaurant": {
+      "get": {
+        "tags": [
+          "Restaurant"
+        ],
+        "summary": "Get all restaurant not add in toast",
+        "description": "All restaurant fetch who not add in toast",
+        "operationId": "get All Restaurant",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get All Restaurant",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/restaurant/getAllRestaurantInToast": {
+      "get": {
+        "tags": [
+          "Restaurant"
+        ],
+        "summary": "All Restaurant from toast",
+        "description": "All restaurant fetch from toast api",
+        "operationId": "get_restaurant_from_toast",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All Restaurant from toast fetch successfully.",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/restaurant/searchRestaurant": {
+      "post": {
+        "tags": [
+          "Restaurant"
+        ],
+        "summary": "search Restaurant",
+        "description": "search Restaurant",
+        "operationId": "search Restaurant",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/searchRestaurant"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get Restaurant",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/restaurant/getRestaurant": {
+      "get": {
+        "tags": [
+          "Restaurant"
+        ],
+        "summary": "Get single Restaurant",
+        "description": "Get single Restaurant",
+        "operationId": "Get single Restaurant",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "name": "restaurantId",
+            "in": "query",
+            "required": true,
+            "description": "636df3deb3c02516a82049a6"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get single Restaurant",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+
+
+    "/restaurant/addEvent": {
+      "post": {
+        "tags": [
+          "Event & Calendar"
+        ],
+        "summary": "add Event",
+        "description": "add Event",
+        "operationId": "add Event",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "name": "restaurantId",
+            "in": "query",
+            "required": true,
+            "description": "Restaurant Id",
+            "example": "636df3e1b3c02516a82049aa"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/add_Event"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Event add sucessfully",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/restaurant/getAllEvents": {
+      "get": {
+        "tags": [
+          "Event & Calendar"
+        ],
+        "summary": "get All Events",
+        "description": "get All Events",
+        "operationId": "get All Events",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "name": "restaurantId",
+            "in": "query",
+            "required": true,
+            "description": "Restaurant Id",
+            "example": "636df3deb3c02516a82049a6"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "get All Events",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/restaurant/getOneEvents": {
+      "get": {
+        "tags": [
+          "Event & Calendar"
+        ],
+        "summary": "Get single event by date",
+        "description": "Get one event by date",
+        "operationId": "getOneEvents",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "name": "restaurantId",
+            "in": "query",
+            "required": true,
+            "description": "Restaurant Id",
+            "example": "636df3deb3c02516a82049a6"
+          },
+          {
+            "name": "eventDate",
+            "in": "query",
+            "required": true,
+            "description": "Event date",
+            "example":"2022-11-08"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get one events",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    
+
+    "/restaurant/discountGraph": {
+      "get": {
+        "tags": [
+          "Discounts"
+        ],
+        "summary": "Discounts graph",
+        "description": "All manager data with orders",
+        "operationId": "discount_graph",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "name": "restaurantId",
+            "in": "query",
+            "required": true,
+            "description": "Restaurant Id"
+          },
+          {
+            "name": "filterValue",
+            "in": "query",
+            "description": "filterValue",
+            "example": "7"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Manager discount in graph fetch successfully",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/restaurant/managerDiscount": {
+      "get": {
+        "tags": [
+          "Discounts"
+        ],
+        "summary": "Manager discounts",
+        "description": "All manager data with orders",
+        "operationId": "manager_discount",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "name": "restaurantId",
+            "in": "query",
+            "required": true,
+            "description": "Restaurant Id"
+          },
+          {
+            "in": "query",
+            "name": "serverId",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "filterValue",
+            "in": "query",
+            "description": "filterValue",
+            "example": "7"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Manager discount fetch successfully",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/restaurant/orderDiscount": {
+      "get": {
+        "tags": [
+          "Discounts"
+        ],
+        "summary": "Manager order discounts",
+        "description": "All manager orders",
+        "operationId": "manager_order",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "name": "restaurantId",
+            "in": "query",
+            "required": true,
+            "description": "Restaurant Id"
+          },
+          {
+            "in": "query",
+            "name": "serverId",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "orderId",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "filterValue",
+            "in": "query",
+            "description": "filterValue",
+            "example": "7"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Manager order discount fetch successfully",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+
+
+    "/restaurant/threshold": {
+      "post": {
+        "tags": [
+          "Threshold"
+        ],
+        "summary": "Threshold",
+        "description": "Threshold",
+        "operationId": "Threshold",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "name": "restaurantId",
+            "in": "query",
+            "required": true,
+            "description": "Restaurant Id",
+            "example": "636df3e1b3c02516a82049aa"
+          },
+          {
+            "name": "slug",
+            "in": "query",
+            "required": true,
+            "description": "slug",
+            "example": "discounts_slug/void_slug/credit_slug"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/add_threshold"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Threshold add sucessfully",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/restaurant/getThreshold": {
+      "get": {
+        "tags": [
+          "Threshold"
+        ],
+        "summary": "dicountThreshold",
+        "description": "dicountThreshold",
+        "operationId": "dicountThreshold",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "name": "restaurantId",
+            "in": "query",
+            "required": true,
+            "description": "Restaurant Id",
+            "example": "636df3e1b3c02516a82049aa"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Threshold fetched sucessfully",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+
+
+    "/restaurant/getCredit": {
+      "get": {
+        "tags": [
+          "Credit Card"
+        ],
+        "summary": "Credit card detail",
+        "description": "If payment type creditcard",
+        "operationId": "credit_card",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "name": "restaurantId",
+            "in": "query",
+            "required": true,
+            "description": "Restaurant Id",
+            "example": "636df3e1b3c02516a82049aa"
+          },
+          {
+            "name": "filterValue",
+            "in": "query",
+            "description": "filterValue",
+            "example": "7"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Credit fetched sucessfully",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+
+
+    "/restaurant/orderGet": {
+      "get": {
+        "tags": [
+          "Order Detail"
+        ],
+        "summary": "Order Detail",
+        "description": "All order detail",
+        "operationId": "get_order",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "name": "restaurantId",
+            "in": "query",
+            "required": true,
+            "description": "Restaurant Id",
+            "example": "636df3e1b3c02516a82049aa"
+          },
+          {
+            "name": "filterValue",
+            "in": "query",
+            "description": "filterValue",
+            "example": "7"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order detail fetched sucessfully",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/restaurant/searchOrder": {
+      "post": {
+        "tags": [
+          "Order Detail"
+        ],
+        "summary": "search order",
+        "description": "search order",
+        "operationId": "search_order",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "name": "restaurantId",
+            "in": "query",
+            "required": true,
+            "description": "Restaurant Id",
+            "example": "636df3e1b3c02516a82049aa"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/searchOrder"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Get order detail",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+
+    "/restaurant/moreWeek": {
+      "get": {
+        "tags": [
+          "More Screen data"
+        ],
+        "summary": "Weeks data for more screen graph",
+        "description": "more data in graph",
+        "operationId": "WeeksGraphData",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "name": "restaurantId",
+            "in": "query",
+            "required": true,
+            "description": "Restaurant Id",
+            "example": "f94c4e4e-0ac1-4433-a827-15290338a028"
+          },
+          {
+            "name": "filterValue",
+            "in": "query",
+            "description": "date for filterValue",
+            "example": "2019-07-28"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Data fetch successfully for more screen",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/restaurant/moreWeekTotal": {
+      "get": {
+        "tags": [
+          "More Screen data"
+        ],
+        "summary": "moreWeekTotal",
+        "description": "moreWeekTotal",
+        "operationId": "moreWeekTotal",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "name": "filterValue",
+            "in": "query",
+            "description": "date for filterValue",
+            "example": "2019-07-28"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Data fetch successfully for more screen",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+
+    "/restaurant/moreYear": {
+      "get": {
+        "tags": [
+          "More Screen data"
+        ],
+        "summary": "Year data for more screen graph",
+        "description": "more data in graph",
+        "operationId": "yearGraphData",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "name": "restaurantId",
+            "in": "query",
+            "required": true,
+            "description": "Restaurant Id",
+            "example": "f94c4e4e-0ac1-4433-a827-15290338a028"
+          },
+          {
+            "name": "filterValue",
+            "in": "query",
+            "description": "date for filterValue",
+            "example": "2019-07-28"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Data fetch successfully for more screen",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/restaurant/moreYearTotal": {
+      "get": {
+        "tags": [
+          "More Screen data"
+        ],
+        "summary": "moreYearTotal",
+        "description": "moreYearTotal",
+        "operationId": "moreYearTotal",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "name": "filterValue",
+            "in": "query",
+            "description": "date for filterValue",
+            "example": "2019-07-28"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Data fetch successfully for more screen",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+
+    "/restaurant/voidGraph": {
+      "get": {
+        "tags": [
+          "Void"
+        ],
+        "summary": "Void get successfully",
+        "description": "Void get successfully",
+        "operationId": "void_graph",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "name": "restaurantId",
+            "in": "query",
+            "required": true,
+            "description": "Restaurant Id"
+          },
+          {
+            "name": "filterValue",
+            "in": "query",
+            "description": "filterValue",
+            "example": "7"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Void fetched sucessfully",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/restaurant/managerVoid": {
+      "get": {
+        "tags": [
+          "Void"
+        ],
+        "summary": "Manager Void",
+        "description": "All manager data with orders",
+        "operationId": "manager_Void",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "name": "restaurantId",
+            "in": "query",
+            "required": true,
+            "description": "Restaurant Id"
+          },
+          {
+            "in": "query",
+            "name": "serverId",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "filterValue",
+            "in": "query",
+            "description": "filterValue",
+            "example": "7"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Manager Void fetch successfully",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/restaurant/orderVoid": {
+      "get": {
+        "tags": [
+          "Void"
+        ],
+        "summary": "Void order void",
+        "description": "All Void orders",
+        "operationId": "Void_order",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "name": "restaurantId",
+            "in": "query",
+            "required": true,
+            "description": "Restaurant Id"
+          },
+          {
+            "in": "query",
+            "name": "serverId",
+            "type": "string",
+            "required": true
+          },
+          {
+            "in": "query",
+            "name": "orderId",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "filterValue",
+            "in": "query",
+            "description": "filterValue",
+            "example": "7"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Void order discount fetch successfully",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+
+
+    "/account/saved-acc-list": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "account list for first screen",
+        "description": "accounts list saved in restaurant",
+        "operationId": "saved_account_list",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "in": "query",
+            "name": "restaurantId",
+            "value": "636df3e1b3c02516a82049aa",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Accounts get successfully",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/account/accountList": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "account list for second screen",
+        "description": "accounts list",
+        "operationId": "account_list",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "in": "query",
+            "name": "restaurantId",
+            "value": "636df3e1b3c02516a82049aa",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Accounts get successfully",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/account/deleteAccount": {
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Staff Delele",
+        "description": "Staff Deleted",
+        "operationId": "staff-delete",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "in": "query",
+            "name": "accountId",
+            "value": "636df3e1b3c02516a82049aa",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User delete successfully",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+
+
+    
+    "/users/profile": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Fetch associated profile",
+        "description": "Fetch associated profile",
+        "operationId": "profile",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Fetch users profile",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/users/welcome": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "welcome screen content",
+        "description": "welcome",
+        "operationId": "welcome",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Content find",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/users/updateProfile": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Update email and profile data",
+        "description": "Update email and profile data",
+        "operationId": "updateProfile",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "in": "formData",
+            "name": "name",
+            "value": "Johnny Depp",
+            "type": "string"
+          },
+          {
+            "in": "formData",
+            "name": "image",
+            "type": "file"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User Profile Updated",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/users/password": {
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Change password",
+        "description": "Change passord",
+        "operationId": "password",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/change_password"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Change password in system",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/users/notifications-list": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Fetch notifications",
+        "description": "Fetch notifications",
+        "operationId": "Notifications",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All notifications fetched successfully",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/users/report": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Report Alert",
+        "description": "Report Alert",
+        "operationId": "Report Alert",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/alert_id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reported successfully",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/users/notify": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Send Notifictions to users",
+        "description": "Send Notifictions to users",
+        "operationId": "Notify users",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/notify_users"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Notifications sent to the users",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/users/saveLocation": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Save users location",
+        "description": "Save users location",
+        "operationId": "Save Location",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/location"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Location saved successfully",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/users/location":{
+      "post":{
+        "tags":["Users"],
+        "summary": "Turn on/off location",
+        "description": "user can on and off your location",
+        "operationId": "Location_turn",
+        "consumes":["application/json"],
+        "product": ["application/json"],
+        "parameters": [ 
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "in":  "body",
+            "name": "body",
+            "required":true,
+            "schema":{
+              "$ref": "#/definitions/location_turn"
+            }
+          }
+        ],
+        "responses":{
+          "200": {
+            "description": "Location update successfully",
+            "schema":{
+              "$ref":"#/definitions/responsesOk"
+            },
+            "500":{
+              "description": "Unexpected error.",
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/users/notification": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Notification turn on/off",
+        "description": "Notification turn on/off",
+        "operationId": "notification-turn",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/notification_turn"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Notificatin change successfully",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/users/media": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Media turn on/off",
+        "description": "Media turn on/off",
+        "operationId": "Media-turn",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/media_turn"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Media change successfully",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/users/nearAd": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Near Ad",
+        "description": "Show Ad near user",
+        "operationId": "near_ad",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Near Ad get successfully",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/users/deleteUser": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "User Delele",
+        "description": "User Deleted",
+        "operationId": "user-delete",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User delete successfully",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/users/getAd": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "User Ad Random or Not",
+        "description": "User Ad Random or According his miles, lat, and long",
+        "operationId": "user-getAd",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/getAd"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User ad fetch successfully",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/users/socialLogIn": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "social login",
+        "description": "social login",
+        "operationId": "social login",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/social_login"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Login sucessfully",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+
+
+
+    "/subscriptions/all-subscription":{
+      "get": {
+        "tags": [
+          "Subscriptions"
+        ],
+        "summary": "Show subscription",
+        "description": "Show all subscription",
+        "operationId": "show-subscription",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Show all subscription  successfully",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/add-subscription":{
+      "post": {
+        "tags": [
+          "Subscriptions"
+        ],
+        "summary": "add subscription",
+        "description": "add subscription by user",
+        "operationId": "add_subscription",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/parameters/HeaderVersion"
+          },
+          {
+            "$ref": "#/parameters/HeaderLanguage"
+          },
+          {
+            "$ref": "#/parameters/HeaderPlatform"
+          },
+          {
+            "$ref": "#/parameters/HeaderAuth"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/subscription_add"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "add all subscription successfully",
+            "schema": {
+              "$ref": "#/definitions/responsesOk"
+            }
+          },
+          "500": {
+            "description": "Unexpected error.",
+            "schema": {
+              "$ref": "#/definitions/responsesError"
+            }
+          }
+        }
+      }
+    },
+
+
+
+    "/pages/staticPages": {
+      "post": {
+          "tags": ["Pages"],
+          "summary": "Show static Pages",
+          "description": "Show static Pages",
+          "operationId": "static_page",
+          "consumes": ["application/json"],
+          "produces": ["application/json"],
+          "parameters": [
+              {
+                  "$ref": "#/parameters/HeaderVersion"
+              },
+              {
+                  "$ref": "#/parameters/HeaderLanguage"
+              },
+              {
+                  "$ref": "#/parameters/HeaderPlatform"
+              },
+              {
+                  "$ref": "#/parameters/HeaderAuth"
+              },
+              {
+                  "in": "body",
+                  "name": "body",
+                  "required": true,
+                  "schema": {
+                      "$ref": "#/definitions/show-static_pages"
+                  }
+              }
+          ],
+          "responses": {
+              "200": {
+                  "description": "show static pages",
+                  "schema": {
+                      "$ref": "#/definitions/responsesOk"
+                  }
+              },
+              "500": {
+                  "description": "Unexpected error.",
+                  "schema": {
+                      "$ref": "#/definitions/responsesError"
+                  }
+              }
+          }
+      }
+    }
+  },
+
+  
+
+  "definitions": {
+    
+    "add_threshold": {
+      "type": "object",
+      "required": [
+        "threshold"
+      ],
+      "properties": {
+        "threshold": {
+          "type": "number",
+          "description": "threshold value for different modules",
+          "example": 23
+        }
+      }
+    },
+    "add_Event": {
+      "type": "object",
+      "required": [
+        "eventTitle",
+        "eventName",
+        "eventDate",
+        "time",
+        "timeFormat",
+        "additionalNotes"
+      ],
+      "properties": {
+        "eventTitle": {
+          "type": "string",
+          "description": "Event title",
+          "example": "zoom meeting for clients"
+        },
+        "eventName": {
+          "type": "string",
+          "description": "event name",
+          "example": "event name"
+        },
+        "eventDate": {
+          "type": "string",
+          "description": "event date",
+          "example": "2022-11-08"
+        },
+        "time": {
+          "type": "string",
+          "description": "time",
+          "example": "05:28"
+        },
+        "timeFormat": {
+          "type": "string",
+          "description": "time format",
+          "example": "AM/PM"
+        },
+        "additionalNotes": {
+          "type": "string",
+          "description": "additional notes",
+          "example": "additional notes"
+        }
+      }
+    },
+    "social_login": {
+      "type": "object",
+      "required": [
+        "email",
+        "socialType",
+        "socialId",
+        "deviceType",
+        "deviceId",
+        "deviceToken"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "kers@yopmail.com"
+        },
+        "socialType": {
+          "type": "string",
+          "example": "xyz"
+        },
+        "socialId": {
+          "type": "string",
+          "example": "xyz"
+        },
+        "deviceToken": {
+          "type": "String",
+          "example": "fkdkfdkd-2929292929"
+        },
+        "deviceId": {
+          "type": "String",
+          "example": "fkdkfdkd-2929292929"
+        },
+        "deviceType": {
+          "type": "String",
+          "example": "fkdkfdkd-2929292929"
+        }
+      }
+    },
+    "searchRestaurant": {
+      "type": "object",
+      "required": [
+        "search"
+      ],
+      "properties": {
+        "search": {
+          "type": "string",
+          "description": "search",
+          "example": "search"
+        }
+      }
+    },
+    "searchOrder": {
+      "type": "object",
+      "required": [
+        "search"
+      ],
+      "properties": {
+        "search": {
+          "type": "string",
+          "description": "search",
+          "example": "search"
+        }
+      }
+    },
+    "getStaff": {
+      "type": "object",
+      "required": [
+        "restaurant"
+      ],
+      "properties": {
+        "restaurant": {
+          "type": "string",
+          "description": "restaurant",
+          "example": "restaurant ID"
+        }
+      }
+    },
+    "add_restaurant": {
+      "type": "object",
+      "required": [
+        "restaurantGuid",
+        "restaurantName",
+        "managementGroupGuid",
+        "locationName",
+        "createdByEmailAddress",
+        "modifiedDate",
+        "createdDate",
+        "isoModifiedDate",
+        "isoCreatedDate"
+      ],
+      "properties": {
+       "restaurantGuid": {
+          "type": "string",
+          "description": "Event title",
+          "example": "f94c4e4e-0ac1-4433-a827-15290338a028"
+        },
+       "locationName": {
+          "type": "string",
+          "description": "Restaurant location",
+          "example": "Arundel Mills"
+        },
+        "managementGroupGuid": {
+          "type": "string",
+          "description": "managementGroupGuid",
+          "example": "0d78a54f-7ff5-4932-9695-89858d8f53ff"
+        },
+        "restaurantName": {
+          "type": "string",
+          "description": "restaurantName",
+          "example": "Chevys Fresh Mex"
+        },
+        "createdByEmailAddress": {
+          "type": "string",
+          "description": "createdByEmailAddress",
+          "example": "liz.jackson@toasttab.com"
+        },
+        "modifiedDate": {
+          "type": "string",
+          "description": "modifiedDate",
+          "example": "1596751307503"
+        },
+        "isoModifiedDate": {
+          "type": "string",
+          "description": "isoModifiedDate",
+          "example": "2020-08-06T22:01:47.503Z"
+        },
+        "isoCreatedDate": {
+          "type": "string",
+          "description": "isoCreatedDate",
+          "example": "2020-08-06T22:01:47.503Z"
+        }
+      }
+    },
+    "subscription_add": {
+      "type": "object",
+      "required": [
+        "subscriptionId",
+        "response"
+      ],
+      "properties": {
+        "subscriptionId": {
+          "type": "number",
+          "description": "Add subscription by user",
+          "example": 2
+        },
+        "response": {
+          "type": "object",
+          "description": "Subscription",
+          "example": "bw3"
+        }
+      }
+    },
+    "notification_turn": {
+      "type": "object",
+      "required": [
+        "notification"
+      ],
+      "properties": {
+        "notification": {
+          "type": "boolean",
+          "description": "Turn on/off notification",
+          "example": false
+        }
+      }
+    },
+    "media_turn": {
+      "type": "object",
+      "required": [
+        "media"
+      ],
+      "properties": {
+        "media": {
+          "type": "boolean",
+          "description": "Turn on/off media",
+          "example": false
+        }
+      }
+    },
+    "show-static_pages": {
+      "type": "object",
+      "required": [
+        "slug"
+      ],
+      "properties": {
+        "slug": {
+          "type": "string",
+          "example": "privacy-policy"
+        }
+      }
+    },
+    "user_signup": {
+      "type": "object",
+      "required": [
+        "email",
+        "password",
+        "deviceType",
+        "deviceToken"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "kers@yopmail.com"
+        },
+        "password": {
+          "type": "string",
+          "format": "password",
+          "example": "test123"
+        },
+        "deviceToken": {
+          "type": "String",
+          "example": "fkdkfdkd-2929292929"
+        },
+        "deviceType": {
+          "type": "String",
+          "example": "fkdkfdkd-2929292929"
+        }
+      }
+    },
+    "location_turn":{
+      "type": "object",
+      "required":  [
+        "location"
+      ],
+      "properties":{
+        "location":{
+          "type":"boolean",
+          "example": false
+        }
+      }
+    },
+    "signup-mobile": {
+      "type": "object",
+      "required": [
+        "mobileNumber"
+      ],
+      "properties": {
+        "mobileNumber": {
+          "type": "Number",
+          "example": "9911213141"
+        }
+      }
+    },
+    "sendmail_signup": {
+      "type": "object",
+      "required": [
+        "email",
+        "password",
+        "confirm_password",
+        "deviceToken",
+        "deviceType"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "kers@yopmail.com"
+        },
+        "location": {
+          "type": "object",
+          "description": "Enter your location",
+          "example": {"coordinates":[50.1222,60.1222]}
+        },
+        "password": {
+          "type": "string",
+          "example": "12345678"
+        },
+        "confirm_password": {
+          "type": "string",
+          "example": "12345678"
+        },
+        "deviceToken": {
+          "type": "string",
+          "example": "fkdkfdkd-2929292929"
+        },
+        "deviceType": {
+          "type": "string",
+          "example": "fkdkfdkd-2929292929"
+        }
+      }
+    },
+    "go_live": {
+      "type": "object",
+      "required": [
+        "category"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "example": "Gang firing"
+        },
+        "description": {
+          "type": "string",
+          "example": "Somebody fighting"
+        },
+        "location": {
+          "type": "object",
+          "description": "Enter your location",
+          "example": {"coordinates":[50.1222,60.1222]}
+        },
+        "category": {
+          "type": "string",
+          "description": "Enter your location",
+          "example": "61b999892f0d13f1a3005e65"
+        }
+      }
+    },
+    "update_subject": {
+      "type": "object",
+      "required": [
+        "live_id"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "example": "Gang firing"
+        },
+        "live_id": {
+          "type": "string",
+          "description": "Live id",
+          "example": "621f4a2f7800f1148c3610af"
+        }
+      }
+    },
+    "verify_otp": {
+      "type": "object",
+      "required": [
+        "token",
+        "otp",
+        "email"
+      ],
+      "properties": {
+        "token": {
+          "type": "string",
+          "description": "Auth token",
+          "example": "5ced3056adc9846820a9d520"
+        },
+        "otp": {
+          "type": "string",
+          "description": "Recieved on submitted mobile number",
+          "example": "1234"
+        },
+        "email": {
+          "type": "string",
+          "description": "User Email",
+          "example": "abc@yopmail.com"
+        }
+      }
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "coordinates": {
+          "type": "object",
+          "description": "Enter your location",
+          "example": [50.1222,60.1222]
+        }
+      }
+    },
+    "resend_otp": {
+      "type": "object",
+      "required": [
+        "token",
+        "email"
+      ],
+      "properties": {
+        "token": {
+          "type": "string",
+          "description": "Auth token",
+          "example": "5ced3056adc9846820a9d520"
+        },
+        "email": {
+          "type": "string",
+          "description": "User Email",
+          "example": "abc@yopmail.com"
+        }
+      }
+    },
+    "reset_password": {
+      "type": "object",
+      "required": [
+        "email",
+        "password",
+        "confirm_password",
+        "token"
+      ],
+      "properties": {
+        "token":{
+          "type": "string",
+          "description":"Confirm token",
+          "example": "1A03gjh94ds5f"
+        },
+        "email": {
+          "type": "string",
+          "description": "Email",
+          "example": "abc@yopmail.com"
+        },
+        "password": {
+          "type": "string",
+          "format": "password",
+          "example": "1234"
+        },
+        "confirm_password": {
+          "type": "string",
+          "format": "password",
+          "example": "1234"
+        }
+      }
+    },
+    "forgot_password": {
+      "type": "object",
+      "required": [
+        "email"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "test@yopmail.com"
+        }
+      }
+    },
+    "add_lead": {
+      "type": "object",
+      "required": [
+        "businessName",
+        "name",
+        "email",
+        "mobile",
+        "phone",
+        "ip"
+      ],
+      "properties": {
+        "businessName": {
+          "type": "string",
+          "description": "Business name",
+          "example": "first business"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of lead",
+          "example": "Peter"
+        },
+        "email": {
+          "type": "string",
+          "description": "Email of lead",
+          "example": "avi@yopmail.com"
+        },
+        "mobile": {
+          "type": "string",
+          "description": "Mobile of lead",
+          "example": "(123) 456 7890"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Primary phone of lead",
+          "example": "(123) 456 7890"
+        },
+        "ip": {
+          "type": "string",
+          "description": "ip address of lead",
+          "example": "192.168.0.141"
+        }
+      }
+    },
+    "invite_lead": {
+      "type": "object",
+      "required": [
+        "email"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Email of lead",
+          "example": "avi@yopmail.com"
+        }
+      }
+    },
+    "fetch_alert": {
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "object",
+          "description": "location",
+          "example": {
+            "coordinates": [
+              26.895471778781342,
+              75.82682314539868
+            ]
+          }
+        }
+      }
+    },
+    "alert_id": {
+      "type": "object",
+      "properties": {
+        "alertid": {
+          "type": "string",
+          "description": "Enter your alert_id",
+          "example": "6151706f55e6da07e83dd543"
+        }
+      }
+    },
+    "change_password": {
+      "type": "object",
+      "required": [
+        "current_password",
+        "password",
+        "confirm_password"
+      ],
+      "properties": {
+        "current_password": {
+          "type": "string",
+          "description": "Current password",
+          "format": "password",
+          "example": "12345"
+        },
+        "password": {
+          "type": "string",
+          "description": "Current password",
+          "format": "password",
+          "example": "123456"
+        },
+        "confirm_password": {
+          "type": "string",
+          "description": "Current password",
+          "format": "password",
+          "example": "123456"
+        }
+      }
+    },
+    "update_profile": {
+      "type": "object",
+      "required": [
+        "email",
+        "name"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "email",
+          "example": "kers@yopmail.com"
+        },
+        "name": {
+          "type": "string",
+          "description": "name",
+          "example": "Aal"
+        }
+      }
+    },
+    "notify_users": {
+      "type": "object",
+      "required": [
+        "user",
+        "alertid"
+      ],
+      "properties": {
+        "user": {
+          "type": "array",
+          "description": "user",
+          "example": [
+            "6148258c683c0f30ac638b89",
+            "614b1954388c9724b8b39ca2"
+          ]
+        },
+        "alertid": {
+          "type": "string",
+          "description": "alertid",
+          "example": "6155ac9e27f6f334b41b3095"
+        }
+      }
+    },
+    "add_alert": {
+      "type": "object",
+      "required": [
+        "user",
+        "address",
+        "alertid"
+      ],
+      "properties": {
+        "location": {
+          "type": "object",
+          "description": "lat long",
+          "example": {
+            "coordinates": [
+              26.90840087854311,
+              75.74327338614565
+            ]
+          }
+        },
+        "alertLocation": {
+          "type": "object",
+          "description": "lat long",
+          "example": {
+            "coordinates": [
+              26.90840087854311,
+              75.74327338614565
+            ]
+          }
+        },
+        "alertType": {
+          "type": "string",
+          "description": "alertType",
+          "example": "Fire"
+        },
+        "address": {
+          "type": "string",
+          "description": "address",
+          "example": "1234 street"
+        },
+        "confirmedby": {
+          "type": "number",
+          "description": "confirmedby",
+          "example": "3"
+        },
+        "msg": {
+          "type": "string",
+          "description": "msg",
+          "example": "The road is blocked due to heavy water spill"
+        },
+        "image": {
+          "type": "string",
+          "description": "image",
+          "example": "image/incident.jpg"
+        }
+      }
+    },
+    "my-practices": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Email of associate practice",
+          "example": "avik12@yopmail.com"
+        }
+      }
+    },
+    "add_cart": {
+      "type": "object",
+      "required": [
+        "product"
+      ],
+      "properties": {
+        "product": {
+          "type": "array",
+          "description": "Array of products ",
+          "example": [
+            {
+              "productId": "5eeb27df089b1e1294fbb363",
+              "vendorId": "5eea130f95e1160ce0f2ae22",
+              "quantity": 3
+            }
+          ]
+        }
+      }
+    },
+    "seat_availbility": {
+      "properties": {
+        "availbility": {
+          "type": "string",
+          "description": "Set availbility of product",
+          "example": "no_stock"
+        },
+        "productVendorId": {
+          "type": "string",
+          "description": "This is product vendor id",
+          "example": "5efdb1e9850a4d40067326fd"
+        }
+      }
+    },
+    "offer_price": {
+      "properties": {
+        "offerPrice": {
+          "type": "number",
+          "description": "Set offer price per unit of product",
+          "example": 5
+        },
+        "productVendorId": {
+          "type": "string",
+          "description": "This is product vendor id",
+          "example": "5efdb1e9850a4d40067326fd"
+        }
+      }
+    },
+    "order_history": {
+      "type": "object",
+      "properties": {
+        "limit": {
+          "type": "number",
+          "description": "Limit ",
+          "example": 10
+        },
+        "offset": {
+          "type": "number",
+          "description": "offset of order to fetch",
+          "example": 0
+        },
+        "fromDate": {
+          "type": "string",
+          "description": "fromDate for order history",
+          "example": "22/06/2020"
+        },
+        "toDate": {
+          "type": "string",
+          "description": "toDate for order history",
+          "example": "03/07/2020"
+        },
+        "practiceId": {
+          "type": "string",
+          "description": "Add practice id in case of concierge type user",
+          "example": "5ec3902d2fe43e28242b7a11"
+        }
+      }
+    },
+    "order_total": {
+      "type": "object",
+      "properties": {
+        "limit": {
+          "type": "number",
+          "description": "Limit ",
+          "example": 10
+        },
+        "offset": {
+          "type": "number",
+          "description": "offset of order to fetch",
+          "example": 0
+        },
+        "fromDate": {
+          "type": "string",
+          "description": "fromDate for order history",
+          "example": "22/06/2020"
+        },
+        "toDate": {
+          "type": "string",
+          "description": "toDate for order history",
+          "example": "03/07/2020"
+        },
+        "practiceId": {
+          "type": "string",
+          "description": "Add practice id in case of concierge type user",
+          "example": "5ec3902d2fe43e28242b7a11"
+        }
+      }
+    },
+    "order_detail": {
+      "type": "object",
+      "properties": {
+        "limit": {
+          "type": "number",
+          "description": "Limit ",
+          "example": 10
+        },
+        "offset": {
+          "type": "number",
+          "description": "offset of order to fetch",
+          "example": 0
+        },
+        "fromDate": {
+          "type": "string",
+          "description": "fromDate for order history",
+          "example": 0
+        },
+        "toDate": {
+          "type": "string",
+          "description": "toDate for order history",
+          "example": 0
+        }
+      }
+    },
+    "place_order": {
+      "type": "object",
+      "properties": {
+        "products": {
+          "type": "array",
+          "description": "Array of products ",
+          "example": [
+            {
+              "productId": "5eeb27df089b1e1294fbb361",
+              "vendorId": "5eea130f95e1160ce0f2ae22",
+              "quantity": 6,
+              "pricePerPiece": 3,
+              "buyingDiscount": 1,
+              "subCategoryId": "5ea03420180fc1192024739f"
+            }
+          ]
+        },
+        "shippingAddress": {
+          "type": "string",
+          "description": "Add shipping address",
+          "example": "A-23 avenue street,calfornia,united state"
+        },
+        "orderItemCount": {
+          "type": "number",
+          "description": "Total number of item in order",
+          "example": 3
+        },
+        "practiceId": {
+          "type": "string",
+          "description": "Total number of item in order",
+          "example": "5ed8e07cc9e61918a0572ffb"
+        }
+      }
+    },
+    "tech_sheet": {
+      "type": "object",
+      "required": [
+        "fileName",
+        "productId"
+      ],
+      "properties": {
+        "fileName": {
+          "type": "string",
+          "description": "file name",
+          "example": "5eea130f95e1160ce0f2ae22.csv"
+        },
+        "productId": {
+          "type": "string",
+          "description": "product id",
+          "example": "5eeb27df089b1e1294fbb364"
+        }
+      }
+    },
+    "add_product": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "type": "string",
+          "description": "Project id",
+          "example": "5eeb27df089b1e1294fbb363"
+        }
+      }
+    },
+    "check_out": {
+      "type": "object",
+      "properties": {
+        "example": [
+          {
+            "productId": "5eeb27df089b1e1294fbb363",
+            "quantity": 3
+          }
+        ]
+      }
+    },
+    "clear_cart": {
+      "type": "object",
+      "properties": {
+        "example": [
+          {
+            "productId": "5eeb27df089b1e1294fbb363"
+          }
+        ]
+      }
+    },
+    "resendOtp": {
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "5ced3056adc9846820a9d520",
+          "description": "User id recieved in previous step"
+        }
+      }
+    },
+    "login": {
+      "type": "object",
+      "required": [
+        "email",
+        "deviceType",
+        "deviceToken",
+        "deviceId"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "ravs601@yopmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "12345"
+        },
+        "deviceId": {
+          "type": "string",
+          "example": "asdfe12dfdf34dgd5"
+        },
+        "deviceToken": {
+          "type": "string",
+          "example": "fkdkfdkd-2929292929"
+        },
+        "deviceType": {
+          "type": "string",
+          "example": "fkdkfdkd-2929292929"
+        },
+        "location": {
+          "type": "object",
+          "description": "Enter your location",
+          "example": {"coordinates":[50.1222,60.1222]}
+        }
+      }
+    },
+    "logout": {
+      "type": "object",
+      "required": [
+        "deviceToken"
+      ],
+      "properties": {
+        "deviceToken": {
+          "type": "string",
+          "example": "device-token"
+        }
+      }
+    }, 
+    "getAd": {
+      "type": "object",
+      "required": [
+        "miles",
+        "lat",
+        "lng"
+      ],
+      "properties": {
+        "miles": {
+          "type": "number",
+          "example": 10
+        },
+        "lat": {
+          "type": "number",
+          "example": 26.9
+        },
+        "lng": {
+          "type": "number",
+          "example": 75.7
+        }
+      }
+    },
+    "alternate_product": {
+      "type": "object",
+      "required": [
+        "practiceId",
+        "productId"
+      ],
+      "properties": {
+        "productId": {
+          "type": "array",
+          "description": "Array of products ",
+          "example": [
+            {
+              "productId": "5eeb27df089b1e1294fbb361"
+            }
+          ]
+        },
+        "practiceId": {
+          "type": "string",
+          "description": "practiceId",
+          "example": "5ed8e07cc9e61918a0572ffb"
+        }
+      }
+    },
+    "responsesOk": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object"
+        }
+      }
+    },
+    "responsesError": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "error": {
+          "type": "object"
+        }
+      }
+    },
+    "loginResponseOk": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "example": "VERIFY_OTP",
+          "description": "If account not verified then rediect user to otp screen and enter OTP send to his phone number"
+        },
+        "code": {
+          "type": "string"
+        },
+        "msg": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object"
+        }
+      }
+    }
+  },
+
+
+
+  "parameters": {
+    "HeaderVersion": {
+      "name": "X-Bezzy-Version",
+      "in": "header",
+      "description": "X-Bezzy-Version",
+      "required": true,
+      "type": "string",
+      "default": "1.0.0"
+    },
+    "HeaderLanguage": {
+      "name": "Accept-Language",
+      "in": "header",
+      "description": "Accept-Language",
+      "required": true,
+      "type": "string",
+      "default": "en"
+    },
+    "HeaderPlatform": {
+      "name": "X-Bezzy-Platform",
+      "in": "header",
+      "description": "android or ios or web",
+      "required": true,
+      "type": "string",
+      "default": "android"
+    },
+    "HeaderAuth": {
+      "name": "Authorization",
+      "in": "header",
+      "description": "Authorization",
+      "required": true,
+      "type": "string"
+    },
+    "HeaderOptionalAuth": {
+      "name": "Authorization",
+      "in": "header",
+      "description": "Authorization",
+      "type": "string"
+    }
+  }
+}

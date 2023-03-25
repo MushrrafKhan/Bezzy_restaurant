@@ -1,0 +1,183 @@
+<% layout('layouts/admin') -%>
+<div class="row">
+    <div class="col-xl-3 col-md-8">
+       <!-- Card -->
+       <div class="card mb-30">
+          <div class="card-body">
+             <div class="d-flex align-items-center justify-content-between">
+                <div class="increase">
+                   <div class="card-title d-flex align-items-end mb-2">
+                      <a href="/users"><h2><%=user_count %></h2></a>
+                   </div>
+                   <h3 class="card-subtitle mb-2" style="color: #fff;">Total Users</h3>
+                </div>
+                <div class="congratulation-img">
+                   <img src="<%= siteUrl %>/img/media/images.png" alt="">
+                </div>
+             </div>
+          </div>
+       </div>
+       <!-- End Card -->
+    </div>
+    <div class="col-xl-3 col-md-8">
+        <!-- Card -->
+        <!-- <div class="card mb-30">
+           <div class="card-body">
+              <div class="d-flex align-items-center justify-content-between">
+                 <div class="increase">
+                    <div class="card-title d-flex align-items-end mb-2">
+                       <a href="/alerts/list"><h2><%=Total_alerts %></h2></a>
+                    </div>
+                    <h3 class="card-subtitle mb-2">Total Alerts</h3>
+                 </div>
+                 <div class="congratulation-img">
+                    <img src="<%= siteUrl %>/img/media/megaphone-2374502__480.png" alt="">
+                 </div>
+              </div>
+           </div>
+        </div> -->
+        <!-- End Card -->
+    </div>
+
+</div>
+
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card mb-30">
+            <div class="card-body pt-30">
+                <h4 class="font-20 " style="color: #fff;">Recent users</h4>
+            </div>
+            <div class="table-responsive">
+                <!-- Invoice List Table -->
+                <table class="text-nowrap bg-white dh-table">
+                    <thead>
+                        <tr>
+                            <th>S.No.</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%  new_users.forEach(function(user, index) { %>
+                            <tr>
+                                <td><%= index + 1 %></td>
+                                <td><%=user.name %></td>
+                                <td><%=user.email %></td>
+                                <td><% if(user.isSuspended){%><span class="badge label-table badge-secondary">In-Active</span><% }else{ %><span class="badge label-table badge-success">Active</span><% } %></td>
+                                <td><a href="/users/view/<%=user._id %>" title="view">Profile</a></td>
+                            </tr>
+                        <% });  %> 
+                    </tbody>
+                </table>
+                <!-- End Invoice List Table -->
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+
+
+<script>
+    $(document).ready(() => {
+        const fetchCounts = (dateFrom = '', dateTo = '') => {
+            $.ajax({
+                url: '/counts',
+                type: "POST",
+                data: {
+                    dateFrom,
+                    dateTo
+                },
+                dataType: "json",
+                success: function(res) {
+                    if (res.success) {
+                        const { data: {
+                            usersCount,
+                            total_alerts,
+                            categoriesCount
+
+                        } } = res;
+                        $('.usersCount').text(usersCount);
+                        $('.total_alerts').text(total_alerts);   
+                        $('.categoriesCount').text(categoriesCount);      
+                    }
+                },
+                error: function(res){
+                    $( ".dashBoardAlert").html(`<div class="alert alert-danger alert-dismissible fade show" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>${res.responseJSON.message}</div>`).show();
+                }
+            });
+        }
+
+        fetchCounts();
+
+        $(document).on('change', '#range-datepicker', (e) => {
+            e.preventDefault();
+            const dateRange = $('#range-datepicker').val().replace(/\s/g,'').split('to');
+            fetchCounts(dateRange[0], dateRange[1]);
+        });
+
+        $(document).on('click', '.refreshDashboard', (e) => {
+            e.preventDefault();
+            $('#range-datepicker').val('');
+            $('#range-datepicker').flatpickr({
+                mode: 'range',
+            });
+            fetchCounts();
+        })
+    });
+</script>
+
+<script>
+    function showTime() {
+   var date=new Date();
+   var d = date.getDate();
+   var w = date.getDay();
+    var m= date.getMonth()+1;
+    var y= date.getFullYear();
+    d = d < 10 ? '0'+d : d;
+    m = m < 10 ? '0'+m : m;
+    var strDate = d + '-' + m + '-' + y;
+    var hours = date.getHours();
+     var minutes = date.getMinutes();
+     var ampm = hours >= 12 ? 'pM' : 'aM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    var strTime = hours + ':' + minutes + ' ' + ampm;
+     var date_=strDate+'  '+strTime
+    
+     var monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]; 
+     var dayNames= ["Sun,","Mon,","Tue,","Wed,","Thu,","Fri,","Sat,"];
+
+     document.getElementById("h").innerText = hours;
+     document.getElementById("h").textContent = hours;
+
+     document.getElementById("m").innerText = minutes;
+     document.getElementById("m").textContent = minutes;
+
+     document.getElementById("ampm").innerText = ampm;
+     document.getElementById("ampm").textContent = ampm;
+
+    //  document.getElementById("dn").innerText = dayNames[w];
+    //  document.getElementById("dn").textContent = dayNames[w];
+
+     document.getElementById("d").innerText = d;
+     document.getElementById("d").textContent = d;
+
+     document.getElementById("mn").innerText = m;
+     document.getElementById("mn").textContent = m;
+
+     document.getElementById("y").innerText = y;
+     document.getElementById("y").textContent = y;
+
+   
+    }
+   
+    showTime();
+    setInterval(showTime, 1000);
+</script>

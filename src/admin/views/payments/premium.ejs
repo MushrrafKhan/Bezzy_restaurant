@@ -1,0 +1,314 @@
+<% layout('../layouts/admin') -%>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card bg-transparent">
+            <div class="contact-header d-flex align-items-sm-center media flex-column flex-sm-row bg-white mb-30">
+                <div class="contact-header-left media-body d-flex align-items-center mr-4 col-6">
+                    <!-- Add Concierge -->
+                    <div class="page-title-box">
+                        <div class="page-title-left">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Subscription Management</a></li>
+                                <li class="breadcrumb-item active"><a href="/payments/premium">Premium Subscription</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- End Add Concierge -->
+                </div>
+            </div>
+         </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <h3 class="text-center p-1 mt-2 ">Premium Subscription</h3>
+            <div class="card-body">
+                <form method="post" id="addtUserForm1" action="/payments/premium?subscriptionDuration=10">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="form-group mb-3">
+                                <label>Subscription Id(One Month)<span class="text-danger">*</span></label>
+                                <input type="text" name="subscriptionId" class="form-control" placeholder="Subscription Id" value="<%=premium[0].subscriptionId%>" autocomplete="off">
+                                <div class="text-danger name"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group mb-3">
+                                <label>Subscription Name(One Month)<span class="text-danger">*</span></label>
+                                <input type="text" name="subscriptionName" class="form-control" placeholder="Subscription Name" value="<%=premium[0].subscriptionName%>" autocomplete="off">
+                                <div class="text-danger name"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group mb-3">
+                                <label>Subscription Amount(One Month)<span class="text-danger">*</span></label>
+                                <input type="text" name="subscriptionPrice" class="form-control" placeholder="Subscription Amount" value="<%=premium[0].subscriptionPrice%>" autocomplete="off">
+                                <div class="text-danger name"></div>
+                            </div>
+                        </div>
+                        
+
+                       
+
+                        <div class="col-lg-3 text-left">
+                            <div class="form-group mb-3 text-center">
+                                <button id="addtUserForm1" type="submit" class="btn btn-primary waves-effect waves-light">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <form method="post" id="addtUserForm3" action="/payments/premium?subscriptionDuration=30">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="form-group mb-3">
+                                <label>Subscription Id(Three Months)<span class="text-danger">*</span></label>
+                                <input type="text" name="subscriptionId" class="form-control" placeholder="Subscription Id" value="<%=premium[1].subscriptionId%>" autocomplete="off" >
+                                <div class="text-danger name"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group mb-3">
+                                <label>Subscription Name(Three Month)<span class="text-danger">*</span></label>
+                                <input type="text" name="subscriptionName" class="form-control" placeholder="Subscription Name" value="<%=premium[1].subscriptionName%>" autocomplete="off">
+                                <div class="text-danger name"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group mb-3">
+                                <label>Subscription Amount(Three Months)<span class="text-danger">*</span></label>
+                                <input type="text" name="subscriptionPrice" class="form-control" placeholder="Subscription Amount" value="<%=premium[1].subscriptionPrice%>" autocomplete="off" >
+                                <div class="text-danger name"></div>
+                            </div>
+                        </div>
+                        
+
+                        <div class="col-lg-3 text-left">
+                            <div class="form-group mb-3 text-center">
+                                <button id="addtUserForm3" type="submit" class="btn btn-primary waves-effect waves-light">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <form method="post" id="addtUserForm6" action="/payments/premium?subscriptionDuration=66">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="form-group mb-3">
+                                <label>Subscription Id(Six Months)<span class="text-danger">*</span></label>
+                                <input type="text" name="subscriptionId" class="form-control" placeholder="Subscription Id" value="<%=premium[2].subscriptionId%>" autocomplete="off" >
+                                <div class="text-danger name"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group mb-3">
+                                <label>Subscription Name(Six Months)<span class="text-danger">*</span></label>
+                                <input type="text" name="subscriptionName" class="form-control" placeholder="Subscription Name" value="<%=premium[2].subscriptionName%>" autocomplete="off">
+                                <div class="text-danger name"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group mb-3">
+                                <label>Subscription Amount(Six Months)<span class="text-danger">*</span></label>
+                                <input type="text" name="subscriptionPrice" class="form-control" placeholder="Subscription Amount" value="<%=premium[2].subscriptionPrice%>" autocomplete="off" >
+                                <div class="text-danger name"></div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 text-left">
+                            <div class="form-group mb-3 text-center">
+                                <button id="addtUserForm6" type="submit" class="btn btn-primary waves-effect waves-light">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <form method="post" id="addtUserForm12" action="/payments/premium?subscriptionDuration=120">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="form-group mb-3">
+                                <label>Subscription Id(Twelve Months)<span class="text-danger">*</span></label>
+                                <input type="text" name="subscriptionId" class="form-control" placeholder="Subscription Id" value="<%=premium[3].subscriptionId%>" autocomplete="off" >
+                                <div class="text-danger name"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group mb-3">
+                                <label>Subscription Name(Twelve Months)<span class="text-danger">*</span></label>
+                                <input type="text" name="subscriptionName" class="form-control" placeholder="Subscription Name" value="<%=premium[3].subscriptionName%>" autocomplete="off">
+                                <div class="text-danger name"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="form-group mb-3">
+                                <label>Subscription Amount(Twelve Months)<span class="text-danger">*</span></label>
+                                <input type="text" name="subscriptionPrice" class="form-control" placeholder="Subscription Amount" value="<%=premium[3].subscriptionPrice%>" autocomplete="off" >
+                                <div class="text-danger name"></div>
+                            </div>
+                        </div>
+                        
+
+                        <div class="col-lg-3 text-left">
+                            <div class="form-group mb-3 text-center">
+                                <button id="addtUserForm12" type="submit" class="btn btn-primary waves-effect waves-light">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+      $("#addtUserForm1").validate({
+        rules: {
+            subscriptionId: {
+                required: true,    
+         },
+            subscriptionName: {
+                required: true,    
+         },
+         subscriptionPrice: {
+                required: true,    
+         },    
+        },
+        messages: { 
+            subscriptionId: {
+                required: 'Subscription Id is required.',    
+         },
+            subscriptionMame: {
+                required: 'Subscription Name is required.',
+            },
+            subscriptionPrice: {
+                required: 'Subscription Price is required.',
+            },
+        },
+      });
+      $("#addtUserForm3").validate({
+        rules: {
+            subscriptionId: {
+                required: true,    
+         },
+            subscriptionName: {
+                required: true,    
+         },
+         subscriptionPrice: {
+                required: true,    
+         },    
+        },
+        messages: { 
+            subscriptionId: {
+                required: 'Subscription Id is required.',
+            },
+            subscriptionName: {
+                required: 'Subscription Name is required.',
+            },
+            subscriptionPrice: {
+                required: 'Subscription Price is required.',
+            },
+        },
+      });
+      $("#addtUserForm6").validate({
+        rules: {
+            subscriptionId: {
+                required: true,    
+         },
+            subscriptionName: {
+                required: true,    
+         },
+         subscriptionPrice: {
+                required: true,    
+         },    
+        },
+        messages: { 
+            subscriptionId: {
+                required: 'Subscription Id is required.',
+            },
+            subscriptionName: {
+                required: 'Subscription Name is required.',
+            },
+            subscriptionPrice: {
+                required: 'Subscription Price is required.',
+            },
+        },
+      });
+      $("#addtUserForm12").validate({
+        rules: {
+            subscriptionId: {
+                required: true,    
+         },
+            subscriptionName: {
+                required: true,    
+         },
+         subscriptionPrice: {
+                required: true,    
+         },    
+        },
+        messages: { 
+            subscriptionId: {
+                required: 'Subscription Id is required.',
+            },
+            subscriptionName: {
+                required: 'Subscription Name is required.',
+            },
+            subscriptionPrice: {
+                required: 'Subscription Price is required.',
+            },
+        },
+      });
+    });
+ </script>
+
+<script>
+    function showTime() {
+   var date=new Date();
+   var d = date.getDate();
+   var w = date.getDay();
+    var m= date.getMonth()+1;
+    var y= date.getFullYear();
+    d = d < 10 ? '0'+d : d;
+    m = m < 10 ? '0'+m : m;
+    var strDate = d + '-' + m + '-' + y;
+    var hours = date.getHours();
+     var minutes = date.getMinutes();
+     var ampm = hours >= 12 ? 'pM' : 'aM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    var strTime = hours + ':' + minutes + ' ' + ampm;
+     var date_=strDate+'  '+strTime
+    
+     var monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]; 
+     var dayNames= ["Sun,","Mon,","Tue,","Wed,","Thu,","Fri,","Sat,"];
+
+     document.getElementById("h").innerText = hours;
+     document.getElementById("h").textContent = hours;
+
+     document.getElementById("m").innerText = minutes;
+     document.getElementById("m").textContent = minutes;
+
+     document.getElementById("ampm").innerText = ampm;
+     document.getElementById("ampm").textContent = ampm;
+
+    //  document.getElementById("dn").innerText = dayNames[w];
+    //  document.getElementById("dn").textContent = dayNames[w];
+
+     document.getElementById("d").innerText = d;
+     document.getElementById("d").textContent = d;
+
+     document.getElementById("mn").innerText = m;
+     document.getElementById("mn").textContent = m;
+
+     document.getElementById("y").innerText = y;
+     document.getElementById("y").textContent = y;
+
+   
+    }
+   
+    showTime();
+    setInterval(showTime, 1000);
+</script>

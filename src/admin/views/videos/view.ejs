@@ -1,0 +1,163 @@
+<% layout('../layouts/admin') -%>
+<div class="row ">
+    <div class="col-12">
+        
+        <div class="page-title-box">
+            
+            <div class="page-title-left">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="/videos"> Live videos</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript: void(0);">Play video</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-sm-12 m-2">
+        <div id="alerts"></div>
+        <div class="page-title-box">
+            <h4 class="page-title">View Live Video</h4>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+      
+        <div class="card">
+            
+            <div class="card-body">
+                <div class="row p-5">
+                    <% if(vdo.video_type == 'live-video'){%>
+                        <div class="col-12">
+                            <video
+                            id="my-video"
+                            class="video-js"
+                            controls
+                            preload="auto"
+                            width="854"
+                            height="420"
+                            poster=""
+                            data-setup="{}">
+                            <source src="<%=vdo.live_video%>" type="application/x-mpegURL" />
+                        </div>
+                        <!-- <h1>Live video</h1> -->
+                    <% } else{%>
+                        <div class="col-12">
+                            <video
+                            id="my-video"
+                            class="video-js"
+                            controls
+                            preload="auto"
+                            width="854"
+                            height="420"
+                            poster=""
+                            data-setup="{}">
+                            <source src="<%=img%><%=vdo.live_video%> " type="video/mp4"/>
+                        </div>
+                        <!-- <h1>Saved video</h1> -->
+                    <% } %>
+                    <div class="col-1 mt-4">
+                        <img src="<%=img%><%=vdo.user_id.avatar%>" class="img-fluid rounded-circle"   style="overflow: hidden; width: 62px; height: 62px; padding:0px; " alt="">
+                    </div>
+                    <div class="col-lg-5 mt-4">
+                        <h2 class="p-1"><%=vdo.title%></h2>
+                        <label for="Author"class="mt-2 " style="font-weight: 600;">Author :</label>
+                        <span class="p-2 m-3"><%=vdo.user_id.name%></span>
+                        <label for="Author"class="mt-2 " style="font-weight: 600;">Created :
+                        </label>
+                        <span class=" p-2 m-3">  <%=vdo.created.toDateString()%></span>
+                        
+                    </div>
+                    <div class="col-4 mt-4">
+                        <button class="btn btn-danger float-right"style="border-radius: 50%; background-color: #dc3545;  padding: 24px 24px;" title="Download video" id='download'><i class="icofont-arrow-down text-white text-center " style="font-size: 1em;" ></i></button>
+                    </div>
+                    <div class="col-2"></div>
+                        <div class="col-1"></div>
+                    <div class="col-7 ">
+                        <label for="Description" style="font-weight: 600;">Description : </label>
+                        <p><%=vdo.description%></p>
+                    </div>
+                   
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $('#download').on('click',function(){
+            $.ajax({
+                    url: '<%= siteUrl %>/videos/download',
+                    type: "post",             
+                    data: {
+                        'id': '<%=vdo._id%>'
+                    },
+                    dataType: "json",
+                        
+                    success: function(data) {
+                        console.log(data.success)
+                        if(data.success==true){
+                            $('#alerts').html('<div class="alert alert-success" role="alert">Video downloaded !  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                        }else{
+                            $('#alerts').html('<div class="alert alert-danger" role="alert">Video downloaded error !  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                        }
+                        
+                    }
+                });
+        });
+    })
+</script>
+    
+
+    
+<script>
+    function showTime() {
+   var date=new Date();
+   var d = date.getDate();
+   var w = date.getDay();
+    var m= date.getMonth()+1;
+    var y= date.getFullYear();
+    d = d < 10 ? '0'+d : d;
+    m = m < 10 ? '0'+m : m;
+    var strDate = d + '-' + m + '-' + y;
+    var hours = date.getHours();
+     var minutes = date.getMinutes();
+     var ampm = hours >= 12 ? 'pM' : 'aM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    var strTime = hours + ':' + minutes + ' ' + ampm;
+     var date_=strDate+'  '+strTime
+    
+     var monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]; 
+     var dayNames= ["Sun,","Mon,","Tue,","Wed,","Thu,","Fri,","Sat,"];
+
+     document.getElementById("h").innerText = hours;
+     document.getElementById("h").textContent = hours;
+
+     document.getElementById("m").innerText = minutes;
+     document.getElementById("m").textContent = minutes;
+
+     document.getElementById("ampm").innerText = ampm;
+     document.getElementById("ampm").textContent = ampm;
+
+    //  document.getElementById("dn").innerText = dayNames[w];
+    //  document.getElementById("dn").textContent = dayNames[w];
+
+     document.getElementById("d").innerText = d;
+     document.getElementById("d").textContent = d;
+
+     document.getElementById("mn").innerText = m;
+     document.getElementById("mn").textContent = m;
+
+     document.getElementById("y").innerText = y;
+     document.getElementById("y").textContent = y;
+
+   
+    }
+   
+    showTime();
+    setInterval(showTime, 1000);
+</script>
